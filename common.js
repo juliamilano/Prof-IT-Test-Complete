@@ -53,8 +53,9 @@ function AlertSubmit(){
     var forma = document.forms[0];
     let name = forma.elements['name-input'];
     let email = forma.elements['email-input'];
+    let textAreaComments = forma.elements['comments'];
     
-    const paternName = /[a-zA-Z0-9._%+-]+[\s]{0,1}[a-zA-Z0-9._%+-]+/i;
+    const paternName = /[a-zA-Z0-9а-яА-Я._%+-]+[\s]{0,1}[a-zA-Zа-яА-Я0-9._%+-]+/i;
     const paternEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i;
 
     closeAlertSpan.onclick = function(){
@@ -63,7 +64,7 @@ function AlertSubmit(){
     }
 
     buttonSubmit.onclick = function(e){
-       if((name.value.length !== 0) && paternEmail.test(email.value) && paternName.test(name.value)){
+       if((name.value.length !== 0) && paternEmail.test(email.value) && paternName.test(name.value) && (textAreaComments.value.length !== 0)){
             modalWindow.style.display = "block";
             modalAlert.style.top = screen.availHeight/2 - modalAlert.offsetHeight/1.5 + "px";
             setTimeuot(function(){
@@ -80,7 +81,8 @@ function AlertSubmit(){
               clearInterval(errorInterval);
             }, 2000);
         }
-       }
+    };
+
 }
 
 
