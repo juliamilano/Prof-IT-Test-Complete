@@ -142,10 +142,10 @@
                                 <div class="contact-input__name-email">
                                     <h3>Напишіть нам</h3>
 
-                                    <input type="text" class="input-control__name" name="name" 
+                                    <input type="text" class="input-control__name" name="name-input" 
                                             placeholder="Ваше ім’я" required>  <br>                                 
                                     
-                                    <input type="email" class="input-control__email" name="email" 
+                                    <input type="email" class="input-control__email" name="email-input" 
                                         placeholder="Ваше email" required 
                                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="aaa@mail.com">
                                 </div>
@@ -206,7 +206,12 @@
 
     <div class="modal-window-form-submit" id="modal">
         <div class="modal-alert">
-            <h3>Повідомлення відправлено!</h3> <span id="close">x</span>
+            <h3>Повідомлення відправлено!</h3><span class="close">x</span>
+         </div>
+    </div>
+    <div class="modal-window-form-submit" id="error">
+        <div class="modal-error">
+            <p>Введіть правильні дані!</p><span class="close">x</span>
          </div>
     </div>
 

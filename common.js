@@ -41,19 +41,46 @@ $(document).ready(function() {
 // модальное окно отправки формы
 
 function AlertSubmit(){
-    var __self = this;
     let modalWindow = document.getElementById('modal');
-    let modalAlert = document.querySelector('.modal-alert');
-    let buttonSubmit = document.getElementById('submit');
-    let closeAlertSpan = document.getElementById('close');
+    let modalWindowError = document.getElementById('error');
 
-    buttonSubmit.onclick = function(){
-            modalWindow.style.display = "block";
-            modalAlert.style.top = screen.availHeight/2 - modalAlert.offsetHeight/1.5 + "px";
-    }
+    let modalAlert = document.querySelector('.modal-alert');
+    let modalError = document.querySelector('.modal-error');
+    let closeAlertSpan = document.querySelectorAll('.close');
+
+    let buttonSubmit = document.getElementById('submit');
+    
+    var forma = document.forms[0];
+    let name = forma.elements['name-input'];
+    let email = forma.elements['email-input'];
+    
+    const paternName = /[a-zA-Z0-9._%+-]+[\s]{0,1}[a-zA-Z0-9._%+-]+/i;
+    const paternEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i;
+
     closeAlertSpan.onclick = function(){
             modalWindow.style.display = "none";
+            modalWindowError.style.display = "none";
     }
+
+    buttonSubmit.onclick = function(e){
+       if((name.value.length !== 0) && paternEmail.test(email.value) && paternName.test(name.value)){
+            modalWindow.style.display = "block";
+            modalAlert.style.top = screen.availHeight/2 - modalAlert.offsetHeight/1.5 + "px";
+            setTimeuot(function(){
+                 modalWindow.style.display = "none";
+            }, 1000);
+            return true;
+        }else{
+            modalWindowError.style.display = "block";
+            modalError.style.top = screen.availHeight/2 - modalError.offsetHeight/1.5 + "px";
+            var errorInterval = setInterval(function(){
+              modalWindowError.style.display = "none";
+            }, 1000);
+            setTimeout(function(){
+              clearInterval(errorInterval);
+            }, 2000);
+        }
+       }
 }
 
 
