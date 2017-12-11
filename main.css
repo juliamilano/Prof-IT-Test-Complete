@@ -553,9 +553,32 @@ footer .footer-link{
 }
 .footer-link ul li a{
     color: #2d2d31;
+    position: relative;
 }
 .footer-link ul li a:hover{
     text-decoration: none;
+}
+
+.footer-link ul a.link-icon-face:before,
+.footer-link ul a.link-icon-inst:before,
+.footer-link ul a.link-icon-twi:before{
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 0;
+    left: -25px;
+    font-family: FontAwesome;
+    text-align: center;
+}
+.footer-link ul a.link-icon-face:before{
+    content: "\f09a";
+}
+.footer-link ul a.link-icon-inst:before{
+    content: "\f16d";
+}
+.footer-link ul a.link-icon-twi:before{
+    content: "\f099";
 }
 
 
